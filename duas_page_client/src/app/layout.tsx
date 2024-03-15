@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import NavBar from "@/Components/Shared/NavBar/NavBar";
+import TopBar from "@/Components/Shared/TopBar/TopBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,8 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className}`} suppressHydrationWarning={true}>{children}</body>
+    <html lang="en" className="bg-secondary-bg">
+      <body className={`${inter.className} px-10 pt-10 relative `} suppressHydrationWarning={true}>
+        {children}
+        </body>
     </html>
   );
 }
