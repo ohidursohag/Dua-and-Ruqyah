@@ -4,6 +4,7 @@ import support from "@/assets/icons/nav/support.svg";
 import NavIcon from "../Utilities/NavIcon";
 import profile from '@/assets/icons/nav/profile.svg'
 import { navItems } from "@/utils/navItems";
+import Link from "next/link";
 
 const NavBar = () => {
   return (
@@ -11,17 +12,17 @@ const NavBar = () => {
     {/* Learge Device NavBar */}
     <div className=" h-[92vh] py-6 overflow-y-auto hidden rounded-3xl bg-white xl:flex items-center justify-center  scrollbar-thin">
       <div className=" h-full flex flex-col gap-10 justify-between ">
-        <figure>
-          <Image src={logo} alt="Dua & Ruqyah logo" width={73} height={73} />
-        </figure>
-        <nav className="flex flex-col items-center gap-5">
+        <Link href={'/'} className="flex justify-center items-center">
+          <Image src={'https://duaruqyah.com/assets/dua-logo.svg'} alt="Dua & Ruqyah logo" width={50} height={50} />
+        </Link>
+        <nav className="flex flex-col items-center gap-6">
           {
             navItems.map((item,idx)=> <NavIcon key={idx} icon={item.icon} linkPath={item.linkPath} alt={item.alt}/>)
           }         
         </nav>
-        <figure>
-          <Image src={support} alt="Dua & Ruqyah logo" width={73} height={73} />
-        </figure>
+        <Link href={''} className=" bg-primary size-[50px] rounded-xl flex justify-center items-center">
+          <Image src={support} alt="Dua & Ruqyah logo" width={30} height={30} />
+        </Link>
       </div>
     </div>
     {/* Small Device Navbar */}

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import NavBar from "@/Components/Shared/NavBar/NavBar";
-import TopBar from "@/Components/Shared/TopBar/TopBar";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+import { inter } from "@/utils/fonts";
+
+
 
 export const metadata: Metadata = {
   title: "Dua & Ruqyah",
@@ -21,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-secondary-bg  ">
-      <body className={`${inter.className} px-10 pt-10 fixed inset-0 `} suppressHydrationWarning={true}>
+      <body className={`${inter.className}  xl:px-10 xl:pt-10 fixed inset-0 `} suppressHydrationWarning={true}>
         {children}
         </body>
     </html>
