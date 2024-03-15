@@ -7,7 +7,7 @@ import { Children } from "@/utils/types";
 const DuasLayout: React.FC<Children> = ({ children }) => {
   return (
     <>
-      <div className="min-h-screen grid xl:grid-cols-[105px,1fr] 2xl:grid-cols-[105px,1fr] 3xl:grid-cols-[105px,1fr] gap-6">
+      <div className=" grid xl:grid-cols-[105px,1fr] 2xl:grid-cols-[105px,1fr] 3xl:grid-cols-[105px,1fr] gap-6">
         <NavBar />
         <div className="grid xl:grid-rows-[52px,1fr] gap-6">
           <TopBar />

@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-secondary-bg">
-      <body className={`${inter.className} px-10 pt-10 relative `} suppressHydrationWarning={true}>
+    <html lang="en" className="bg-secondary-bg  ">
+      <body className={`${inter.className} px-10 pt-10 fixed inset-0 `} suppressHydrationWarning={true}>
         {children}
         </body>
     </html>
