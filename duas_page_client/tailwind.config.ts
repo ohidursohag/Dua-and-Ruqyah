@@ -16,16 +16,18 @@ const config: Config = {
         "primary-bg": "#E8F0F5",
         "secondary-bg": "#F7F8FA",
       },
-      screens: {
-        xs: "425px",
-        '2lg':"1140px",
-        "2xl": "1440px",
-        "3xl": "1640px",
-      },
+    },
+    screens: {
+      xs: "425px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      "2lg": "1140px",
+      xl: "1280px",
+      "2xl": "1440px",
+      "3xl": "1640px",
     },
   },
-  plugins: [
-    require('tailwind-scrollbar'),
-  ],
+  plugins: [require("tailwind-scrollbar")],
 };
 export default config;

@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-secondary-bg  ">
-      <body className={`${inter.className}  xl:px-10 xl:pt-10 fixed inset-0 `} suppressHydrationWarning={true}>
+      <body className={`${inter.className}  xl:px-8 xl:pt-8 scrollbar-thin max-w-[1920px] mx-auto`} suppressHydrationWarning={true}>
         {children}
         </body>
     </html>
