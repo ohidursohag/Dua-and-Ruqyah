@@ -25,7 +25,7 @@ const DuaCategoriesSidebar: React.FC<DuaCategoryProps> = ({
    `}>
       <div
         ref={refWraper}
-        className={`bg-white w-[280px] sm:w-[350px] lg:w-[400px] h-full absolute left-0 duration-300 overflow-hidden rounded-r-3xl ${
+        className={`bg-white w-[300px] xs:w-[350px]  lg:w-[400px] h-full absolute left-0 duration-300 overflow-hidden rounded-r-3xl ${
           showCategoryItems ? "translate-x-0" : "-translate-x-[100%]"
         }`}>
         <DuaCategories

@@ -26,7 +26,7 @@ const NavBar = () => {
       </div>
     </div>
     {/* Small Device Navbar */}
-    <div className="fixed z-10 w-full left-0 bottom-0  py-4 overflow-y-auto  rounded-t-[50px] bg-white xl:hidden  scrollbar-thin">
+    <div className="fixed z-10 w-full left-0 bottom-0  py-4 overflow-y-auto  rounded-t-[50px] bg-white xl:hidden  shadow-[0px_0px_2px_.5px_rgba(0,0,0,0.2)]">
     <nav className="flex items-center justify-around gap-5 w-full px-6">
           {
             navItems.map((item,idx)=> <NavIcon key={idx} icon={item.icon} linkPath={item.linkPath} alt={item.alt} className={item.className}/>)

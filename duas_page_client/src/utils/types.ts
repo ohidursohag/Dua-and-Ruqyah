@@ -1,8 +1,7 @@
 export type Children = {
   children?: React.ReactNode
 };
-
-export type AllCategory = {
+export type Category = {
   id: number;
   cat_id: number;
 //   cat_name_bn: string;
@@ -11,9 +10,9 @@ export type AllCategory = {
   no_of_subcat: number;
   no_of_dua: number;
   cat_icon: string;
-}[];
-
-export type AllSubCategory = {
+}
+export type AllCategory = Category[]
+export type SubCategory = {
   id: number;
   cat_id: number;
   subcat_id: number;
@@ -21,9 +20,9 @@ export type AllSubCategory = {
 //   subcat_name_en: string;
   subcat_name: string;
   no_of_dua: number;
-}[];
-
-export type AllDuas = {
+};
+export type AllSubCategory = SubCategory[]
+export type Dua={
   id: number;
   cat_id: number;
   subcat_id: number;
@@ -50,6 +49,7 @@ export type AllDuas = {
 //   refference_en?: string | null;
   refference?: string | null;
   audio: string | null;
-}[];
+}
+export type AllDuas = Dua[]
 
 export type AllDataTogether= AllCategory & AllSubCategory & AllDuas

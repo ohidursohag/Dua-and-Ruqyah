@@ -3,6 +3,8 @@ import { AllCategory, AllSubCategory, AllDuas } from "@/utils/types";
 import Image from "next/image";
 import { useState } from "react";
 import arrowIcon from "@/assets/icons/arrow.svg";
+import Link from "next/link";
+import { convertToHyphenatedLowerCase } from "@/utils/convertToHyphenatedLowerCase";
 
 const CategoriesItems: React.FC<{
   allCategory: AllCategory;
@@ -19,7 +21,7 @@ const CategoriesItems: React.FC<{
   // console.log(allCategory,allDua,allSubCategory)
   return (
     <>
-      <div className="space-y-5 py-5 p-2">
+      <div className="space-y-5 py-5 p-2 mb-5 2lg:mb-28 xl:mb-10">
         {allCategory?.map((category, idx) => (
           <div
             onClick={(event) => {
@@ -28,8 +30,9 @@ const CategoriesItems: React.FC<{
             }}
             key={category.id}
             className={` ${showSubCategories === category.cat_id ? "" : ""}`}>
-            <div
-              className={`w-full rounded-xl hover:bg-primary-bg  px-3 py-2 cursor-pointer duration-300 ${
+            <Link
+            href={`/duas/${convertToHyphenatedLowerCase(category.cat_name)}?cat=${category.cat_id}`}
+              className={`inline-block w-full rounded-xl hover:bg-primary-bg  px-3 py-2 cursor-pointer duration-300 ${
                 showSubCategories === category.cat_id ? "bg-primary-bg" : ""
               }`}>
               <div className="flex justify-between items-center">
@@ -58,7 +61,7 @@ const CategoriesItems: React.FC<{
                   <p className="text-sm text-secondary-text">Duas</p>
                 </div>
               </div>
-            </div>
+            </Link>
             {/* Get all  SubCategories under Category */}
             <div>
             <div className={`ml-8  border-l-2 border-dotted border-primary space-y-3 ${showSubCategories === category.cat_id ? "block pt-5 " : "hidden"}`}>
@@ -69,16 +72,18 @@ const CategoriesItems: React.FC<{
                 .map((subcategory, indx) => (
                   <div
                     onClick={(event) => {
+                      console.log('hit SubCategory')
                       setShowDuas((prev) => (prev === subcategory.subcat_id ? null : subcategory.subcat_id));
                       event.stopPropagation();
                     }}
                     key={subcategory.id}
                     className={`w-full pl-4 pr-2  relative cursor-pointer
-                     
                      `}>
-                    <div className="flex items-start">
+                    <Link href={`/duas/${convertToHyphenatedLowerCase(category.cat_name)}?cat=${category.cat_id}&subcat=${subcategory.subcat_id}`} className="flex items-start">
                       <div
-                        className={`bg-primary size-[6px] rounded-full absolute -left-1 top-0 `}
+                        className={`bg-primary  rounded-full absolute  top-0 border-2 ${
+                          showDuas === subcategory.subcat_id ? "border-transparent size-[6px] -left-1" : "-left-[5px] border-white size-[8px]"
+                        }`}
                       />
                       <div
                         className={`text-sm ${
@@ -86,9 +91,9 @@ const CategoriesItems: React.FC<{
                         }`}>
                         {subcategory.subcat_name}
                       </div>
-                    </div>
+                    </Link>
                     {/* Duas By SubCategory */}
-                    <div className="space-y-3 mt-2">
+                    <div className="space-y-5 mt-2">
                       {allDua
                         ?.filter(
                           (duas) => duas.subcat_id === subcategory.subcat_id
@@ -96,6 +101,7 @@ const CategoriesItems: React.FC<{
                         .map((dua, index) => (
                           <div
                             onClick={(event) => {
+                              console.log('hit Dua')
                               setActiveDua((prev) => prev === dua.dua_id ? null : dua.dua_id);
                               event.stopPropagation()
                             }}
@@ -103,7 +109,9 @@ const CategoriesItems: React.FC<{
                             className={`${
                               showDuas === subcategory.subcat_id ? "block" : "hidden"
                             }`}>
-                            <div className="flex items-center gap-2">
+                            <Link 
+                            href={`/duas/${convertToHyphenatedLowerCase(category.cat_name)}?cat=${category.cat_id}&subcat=${subcategory.subcat_id}&dua=${dua.dua_id}`} 
+                             className="flex items-center gap-2">
                               <Image
                                 src={arrowIcon}
                                 alt="pointer array Icon"
@@ -116,7 +124,7 @@ const CategoriesItems: React.FC<{
                                 }`}>
                                 {dua.dua_name}
                               </p>
-                            </div>
+                            </Link>
                           </div>
                         ))}
                     </div>
