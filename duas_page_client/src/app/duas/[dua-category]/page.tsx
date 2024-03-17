@@ -16,6 +16,7 @@ const Home: React.FC<{ params: string; searchParams: SearchParams }> = ({
   const duaBySpecifCategory = allDua.filter(
     (dua) => dua.cat_id === Number(searchParams.cat)
   );
+  
   // console.log(duaBySpecifCategory);
   // console.log(params, searchParams);
   return (
