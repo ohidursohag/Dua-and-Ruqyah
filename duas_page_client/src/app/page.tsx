@@ -1,11 +1,13 @@
+import Link from "next/link";
 
-const Home = () => {
+const HomePage = () => {
 
   return (
-    <div>
-       <div> This is page </div>
+    <div className="flex items-center gap-5">
+       <div className="text-2xl text-primary-text">Please Visit The Dua Page :</div>
+       <Link href={`/duas/dua's-importance?cat=1`} className="text-3xl text-primary font-bold"> Dua Page</Link>
     </div>
   )
 };
 
-export default Home;
+export default HomePage;

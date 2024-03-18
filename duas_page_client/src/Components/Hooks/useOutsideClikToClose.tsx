@@ -5,9 +5,9 @@ interface OutsideClickHandler {
   (isOpen: boolean): void; // Function to set the open/closed state
 }
 const useOutsideClikToClose = (setFalse:OutsideClickHandler) => {
-  const refWraper = useRef(null);
+  const refWraper = useRef<HTMLDivElement>(null);
   const handleClickOutSide = (event: MouseEvent) => {
-    if (refWraper.current && !refWraper.current.contains(event.target)) {
+    if (refWraper.current && !refWraper.current.contains(event.target as Node)) {
       setFalse(false);
     }
   };

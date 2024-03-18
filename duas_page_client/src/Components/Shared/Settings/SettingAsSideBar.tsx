@@ -3,6 +3,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { IoCallOutline } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import Settings from "./Settings";
+import { LegacyRef } from "react";
 
 interface SidebarClickHandler {
   openSettings: boolean;
@@ -12,7 +13,7 @@ const SettingAsSideBar = ({
   openSettings,
   setOpenSettings,
 }: SidebarClickHandler) => {
-  const refWraper = useOutsideClikToClose(setOpenSettings);
+  const refWraper:LegacyRef<HTMLDivElement> | undefined = useOutsideClikToClose(setOpenSettings);
   return (
     <div 
       className={`fixed bg-gray-900/50  w-full h-full inset-0 right-0 z-[99] duration-300
