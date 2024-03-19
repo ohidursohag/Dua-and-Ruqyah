@@ -21,7 +21,6 @@ const DuaCategories  = async () => {
   const duasRes = await fetch(`${url}/duas?language=${language}`, {
     cache:"force-cache"
   })
-  
   const allDua:AllDuas = await duasRes.json()
   return (
     <div className="h-full relative ">
