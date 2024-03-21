@@ -62,13 +62,13 @@ const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
         </div>
       )}
       {/* Play Audio & Actions icons */}
-      <div className={`grid  ${dua.audio ? "grid-cols-2" : "grid-cols-1"}`}>
+      <div className={`grid gap-5 ${dua.audio ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"}`}>
         {/* Play Audio */}
         {dua.audio && (
             <AudioPlayer url={dua.audio}/>
         )}
         {/* Actions */}
-        <div className="flex items-center justify-end gap-10">
+        <div className="flex items-center sm:justify-end gap-10">
           <button>
             <Image
               src={copyIcon}

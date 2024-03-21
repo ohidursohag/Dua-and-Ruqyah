@@ -33,6 +33,7 @@ useEffect(()=>{
           ?.filter((subCat) => subCat.cat_id === Number(searchParams.cat))
           .map((subCategory) => (
             <div key={subCategory.subcat_id} className="space-y-5 mb-5">
+              {/* Section card / subcategory  section */}
               <div
                 id={`section_${subCategory.subcat_id}`}
                 className="text-primary-text px-5 py-4 w-full bg-white rounded-xl flex items-center gap-3">

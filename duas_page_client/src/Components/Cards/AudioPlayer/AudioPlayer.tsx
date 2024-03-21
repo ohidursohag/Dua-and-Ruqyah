@@ -61,7 +61,7 @@ const AudioPlayer = ({ url }: { url: string }) => {
       <div className="flex items-center gap-2">
         <button
           onClick={togglePlay}
-          className="size-[44px] bg-primary rounded-full flex justify-center items-center">
+          className="size-[36px] xs:size-[44px] bg-primary rounded-full flex justify-center items-center">
           <span className="text-white">
             {playing ? (
               <GiPauseButton size={26} />
@@ -80,7 +80,7 @@ const AudioPlayer = ({ url }: { url: string }) => {
             className="h-[4px] w-[120px] outline-none accent-green-500 "
           />
 
-          <span className={`text-secondary-text`}>
+          <span className={`text-secondary-text w-8`}>
             {formatTime(duration - played)}
           </span>
           <button onClick={toggleLoop}>
