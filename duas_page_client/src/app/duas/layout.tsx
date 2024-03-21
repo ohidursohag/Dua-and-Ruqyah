@@ -12,8 +12,8 @@ const DuasLayout: React.FC<Children> = async ({ children }) => {
         <NavBar />
         <div className="grid grid-rows-[68px,1fr] md:grid-rows-[91px,1fr] xl:grid-rows-[52px,1fr] gap-6">
           <TopBar />
-          <div className="grid grid-col-1 px-3 2lg:grid-cols-[350px,1fr] xl:grid-cols-[350px,1fr]  2xl:grid-cols-[320px,1fr,300px] 2xl:px-0 3xl:grid-cols-[350px,1fr,300px] gap-6">
-            <div className="hidden 2lg:block h-[82.5vh] rounded-3xl bg-white overflow-hidden ">
+          <div className="grid grid-col-1 px-3 2lg:grid-cols-[350px,1fr] xl:grid-cols-[350px,1fr]  2xl:grid-cols-[320px,1fr,300px] 2xl:px-0 3xl:grid-cols-[350px,1fr,300px] gap-4">
+            <div className="hidden 2lg:block h-[82.5vh] rounded-2xl bg-white overflow-hidden ">
               <DuaCategories />
             </div>
             <div className=" 2lg:hidden  rounded-xl bg-white flex items-center">
@@ -21,7 +21,7 @@ const DuasLayout: React.FC<Children> = async ({ children }) => {
                 <DuaCategories />
               </DuaCateGoriesToggle>
             </div>
-            <div className="h-[90vh] ">
+            <div className="h-[75vh] xl:h-[88vh] ">
             {children}
             </div>
             <div className="hidden 2xl:block h-[82.5vh] rounded-3xl bg-white">

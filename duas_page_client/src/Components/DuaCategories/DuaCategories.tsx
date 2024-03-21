@@ -26,18 +26,7 @@ const DuaCategories  = async () => {
   const allDua:AllDuas = await duasRes.json()
   return (
     <>
-      <div className="relative ">
-      <div className="  w-full bg-white z-10">
-        <div className="bg-primary text-white w-full py-4 text-center">
-          Categories
-        </div>
-        <div className="p-3">
-          <CategorySearch />
-        </div>
-      </div>
-      </div>
-
-      <div  className="h-4/5 overflow-y-auto overflow-x-hidden scrollbar-thin ">
+      <div  className="h-full">
         <CategoriesItems
           allCategory={allCategory}
           allDua={allDua}
