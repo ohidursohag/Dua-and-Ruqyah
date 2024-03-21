@@ -5,7 +5,8 @@ import { AllCategory, AllSubCategory, AllDuas } from "@/utils/types";
 const DuaCategories  = async () => {
   // console.log(allCategory,allDua,allSubCategory)
   const language = 'en'
-  let url ='https://satisfying-viridian-pepper.glitch.me'
+  let url ='https://duas-ruqyah-api.glitch.me'
+  // let url ='http://localhost:5001'
   // Fetch Category data
   const categoryRes = await fetch(`${url}/categories?language=${language}`,{
     cache:"force-cache"

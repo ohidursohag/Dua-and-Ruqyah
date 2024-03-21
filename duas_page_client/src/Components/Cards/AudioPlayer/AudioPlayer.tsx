@@ -1,5 +1,5 @@
 "use client";
-import {useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { FiRepeat } from "react-icons/fi";
 import { GiPauseButton } from "react-icons/gi";
 import { IoPlaySharp } from "react-icons/io5";
@@ -20,7 +20,6 @@ const AudioPlayer = ({ url }: { url: string }) => {
 
   // Handle play/pause toggle
   const togglePlay = () => {
-    
     if (playing) {
       setPlaying(false);
       audioRef.current?.pause();
@@ -50,7 +49,6 @@ const AudioPlayer = ({ url }: { url: string }) => {
 
   // Handle Renge Slider Value
   const handleProgressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-
     const newTime = parseFloat(e.target.value);
     setPlayed(newTime);
     if (audioRef.current) {
@@ -98,6 +96,7 @@ const AudioPlayer = ({ url }: { url: string }) => {
         src={url}
         onPlay={handleDuration}
         onTimeUpdate={handlePlayedTime}
+        onLoad={(e) => (e.currentTarget.preload = "metadata")}
       />
     </div>
   );

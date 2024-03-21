@@ -21,7 +21,7 @@ const DuasLayout: React.FC<Children> = async ({ children }) => {
                 <DuaCategories />
               </DuaCateGoriesToggle>
             </div>
-            <div className="h-[90vh] overflow-y-auto scrollbar-thin">
+            <div className="h-[90vh] ">
             {children}
             </div>
             <div className="hidden 2xl:block h-[82.5vh] rounded-3xl bg-white">

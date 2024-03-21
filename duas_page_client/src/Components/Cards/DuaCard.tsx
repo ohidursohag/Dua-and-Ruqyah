@@ -9,7 +9,8 @@ import { Dua } from "@/utils/types";
 import AudioPlayer from "./AudioPlayer/AudioPlayer";
 const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
   return (
-    <>
+    <div id={`dua_${dua.dua_id}`}
+    className=" p-5 w-full bg-white rounded-xl space-y-6  gap-3">
       {/* title section  */}
       <div className="flex items-center gap-3 ">
         <Image src={duaTitleIcon} alt="Dua title icon" width={35} height={35} />
@@ -71,7 +72,7 @@ const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
           <button>
             <Image
               src={copyIcon}
-              alt=" copy button icon"
+              alt=" copy  icon"
               width={24}
               height={24}
             />
@@ -79,7 +80,7 @@ const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
           <button>
             <Image
               src={bookmarkIcon}
-              alt=" copy button icon"
+              alt=" bookmark icon"
               width={20}
               height={20}
             />
@@ -87,7 +88,7 @@ const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
           <button>
             <Image
               src={memorizeIcon}
-              alt=" copy button icon"
+              alt=" memorize icon"
               width={24}
               height={24}
             />
@@ -95,7 +96,7 @@ const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
           <button>
             <Image
               src={shareIcon}
-              alt=" copy button icon"
+              alt=" share icon"
               width={24}
               height={24}
             />
@@ -103,14 +104,14 @@ const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
           <button>
             <Image
               src={reportIcon}
-              alt=" copy button icon"
+              alt=" report icon"
               width={24}
               height={24}
             />
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

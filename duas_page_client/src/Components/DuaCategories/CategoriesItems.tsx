@@ -1,7 +1,7 @@
 "use client";
 import { AllCategory, AllSubCategory, AllDuas } from "@/utils/types";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import arrowIcon from "@/assets/icons/arrow.svg";
 import Link from "next/link";
 import { convertToHyphenatedLowerCase } from "@/utils/convertToHyphenatedLowerCase";
@@ -16,6 +16,8 @@ import poshak from "@/assets/categoryImages/poshak.svg";
 import bari from "@/assets/categoryImages/bari.svg";
 import toilet from "@/assets/categoryImages/toilet.svg";
 import azan_ikamot from "@/assets/categoryImages/azan_ikamot.svg";
+
+
 const categoryIcon = [
   duar_gurutto,
   zikirer_fozilot,
@@ -28,6 +30,8 @@ const categoryIcon = [
   toilet,
   azan_ikamot,
 ];
+
+
 const CategoriesItems: React.FC<{
   allCategory: AllCategory;
   allDua: AllDuas;
@@ -52,6 +56,8 @@ const CategoriesItems: React.FC<{
     subCategory_id
   );
   const [activeDua, setActiveDua] = useState<number | null>(dua_id);
+
+
   // console.log("param Ids ==>",category_id,subCategory_id,dua_id)
   // console.log("Active ==>",activeCategory,activeSubCategory,activeDua)
   return (
@@ -61,10 +67,10 @@ const CategoriesItems: React.FC<{
           <div
             id={`cat_${category.cat_id}`}
             onClick={(event) => {
+              
               setActiveCategory((prev) =>
                 prev === category.cat_id ? category_id : category.cat_id
               );
-              // console.log(category.cat_icon);
               setActiveSubCategory(category_id);
               setActiveDua(dua_id);
               event.stopPropagation();
