@@ -1,5 +1,4 @@
 import duaTitleIcon from "@/assets/icons/duaTitleIcon.svg";
-import playIcon from "@/assets/icons/playButton.svg";
 import copyIcon from "@/assets/icons/copy.svg";
 import shareIcon from "@/assets/icons/share.svg";
 import reportIcon from "@/assets/icons/report.svg";
@@ -7,11 +6,10 @@ import bookmarkIcon from "@/assets/icons/nav/bookmark.svg";
 import memorizeIcon from "@/assets/icons/nav/memorize.svg";
 import Image from "next/image";
 import { Dua } from "@/utils/types";
+import AudioPlayer from "./AudioPlayer/AudioPlayer";
 const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
   return (
-    <div
-      id={`dua_${dua.dua_id}`}
-      className=" p-5 w-full bg-white rounded-xl space-y-6  gap-3">
+    <>
       {/* title section  */}
       <div className="flex items-center gap-3 ">
         <Image src={duaTitleIcon} alt="Dua title icon" width={35} height={35} />
@@ -25,7 +23,6 @@ const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
           {dua.top}
         </p>
       )}
-
       {/* dua arabic */}
       {dua.dua_arabic && (
         <p
@@ -67,14 +64,7 @@ const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
       <div className={`grid  ${dua.audio ? "grid-cols-2" : "grid-cols-1"}`}>
         {/* Play Audio */}
         {dua.audio && (
-          <div>
-            <Image
-              src={playIcon}
-              alt="audio play button"
-              width={44}
-              height={44}
-            />
-          </div>
+            <AudioPlayer url={dua.audio}/>
         )}
         {/* Actions */}
         <div className="flex items-center justify-end gap-10">
@@ -120,7 +110,7 @@ const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

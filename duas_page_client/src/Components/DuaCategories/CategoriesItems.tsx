@@ -5,44 +5,86 @@ import { useState } from "react";
 import arrowIcon from "@/assets/icons/arrow.svg";
 import Link from "next/link";
 import { convertToHyphenatedLowerCase } from "@/utils/convertToHyphenatedLowerCase";
-
+import { useSearchParams } from "next/navigation";
+import duar_gurutto from "@/assets/categoryImages/duar_gurutto.svg";
+import zikirer_fozilot from "@/assets/categoryImages/duas-excellence.svg";
+import dua_kobuler_somoy from "@/assets/categoryImages/time-of-dua.svg";
+import jader_dua_kobul_hoy from "@/assets/categoryImages/jader_dua_kobul_hoy.svg";
+import sokal_sondha from "@/assets/categoryImages/morning-evening.svg";
+import ghum from "@/assets/categoryImages/ghum.svg";
+import poshak from "@/assets/categoryImages/poshak.svg";
+import bari from "@/assets/categoryImages/bari.svg";
+import toilet from "@/assets/categoryImages/toilet.svg";
+import azan_ikamot from "@/assets/categoryImages/azan_ikamot.svg";
+const categoryIcon = [
+  duar_gurutto,
+  zikirer_fozilot,
+  dua_kobuler_somoy,
+  jader_dua_kobul_hoy,
+  sokal_sondha,
+  ghum,
+  poshak,
+  bari,
+  toilet,
+  azan_ikamot,
+];
 const CategoriesItems: React.FC<{
   allCategory: AllCategory;
   allDua: AllDuas;
   allSubCategory: AllSubCategory;
 }> = ({ allCategory, allDua, allSubCategory }) => {
-  const [showSubCategories, setShowSubCategories] = useState<number | null>(null);
-  const [showDuas, setShowDuas] = useState<number | null>(null);
-  const [activeDua, setActiveDua] = useState<number | null>(null);
+  const searchParams = useSearchParams();
+  // get Required Id's from Search params
+  const category_id = Number(searchParams.get("cat"))
+    ? Number(searchParams.get("cat"))
+    : null;
+  const subCategory_id = Number(searchParams.get("subcat"))
+    ? Number(searchParams.get("subcat"))
+    : null;
+  const dua_id = Number(searchParams.get("dua"))
+    ? Number(searchParams.get("dua"))
+    : null;
 
+  const [activeCategory, setActiveCategory] = useState<number | null>(
+    category_id
+  );
+  const [activeSubCategory, setActiveSubCategory] = useState<number | null>(
+    subCategory_id
+  );
+  const [activeDua, setActiveDua] = useState<number | null>(dua_id);
+  // console.log("param Ids ==>",category_id,subCategory_id,dua_id)
+  // console.log("Active ==>",activeCategory,activeSubCategory,activeDua)
   return (
     <>
-      <div className="space-y-5 py-5 p-2 mb-5 2lg:mb-28 xl:mb-10">
-        {allCategory?.map((category, idx) => (
+      <div className="space-y-5  p-2 mb-5 2lg:mb-28 xl:mb-10">
+        {allCategory?.map((category,index) => (
           <div
+            id={`cat_${category.cat_id}`}
             onClick={(event) => {
-              setShowSubCategories((prev) =>
-                prev === category.cat_id ? null : category.cat_id
+              setActiveCategory((prev) =>
+                prev === category.cat_id ? category_id : category.cat_id
               );
+              // console.log(category.cat_icon);
+              setActiveSubCategory(category_id);
+              setActiveDua(dua_id);
               event.stopPropagation();
             }}
-            key={category.id}
-            className={` ${showSubCategories === category.cat_id ? "" : ""}`}>
+            key={category.id}>
             <Link
               href={`/duas/${convertToHyphenatedLowerCase(
                 category.cat_name
               )}?cat=${category.cat_id}`}
               className={`inline-block w-full rounded-xl hover:bg-primary-bg  px-3 py-2 cursor-pointer duration-300 ${
-                showSubCategories === category.cat_id ? "bg-primary-bg" : ""
+                activeCategory === category.cat_id ? "bg-primary-bg" : ""
               }`}>
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
-                  <figure className="bg-secondary-bg p-1 rounded-lg">
+                  <figure className="bg-secondary-bg p-2 rounded-lg">
                     <Image
-                      src={"https://duaruqyah.com/assets/icon/duar_gurutto.svg"}
+                      src={categoryIcon[index]}
                       alt={category.cat_icon}
-                      width={56}
-                      height={56}
+                      width={50}
+                      height={50}
                     />
                   </figure>
                   <div className="space-y-1 ">
@@ -66,22 +108,21 @@ const CategoriesItems: React.FC<{
             <div>
               <div
                 className={`ml-8  border-l-2 border-dotted border-primary space-y-3 ${
-                  showSubCategories === category.cat_id
-                    ? "block pt-5 "
-                    : "hidden"
+                  activeCategory === category.cat_id ? "block pt-5 " : "hidden"
                 }`}>
                 {allSubCategory
                   ?.filter(
                     (subcategories) => subcategories.cat_id === category.cat_id
                   )
-                  .map((subcategory, indx) => (
+                  .map((subcategory) => (
                     <div
                       onClick={(event) => {
-                        setShowDuas((prev) =>
+                        setActiveSubCategory((prev) =>
                           prev === subcategory.subcat_id
-                            ? null
+                            ? subCategory_id
                             : subcategory.subcat_id
                         );
+                        setActiveDua(dua_id);
                         event.stopPropagation();
                       }}
                       key={subcategory.id}
@@ -95,15 +136,15 @@ const CategoriesItems: React.FC<{
                         }`}
                         className="flex items-start">
                         <div
-                          className={`bg-primary  rounded-full absolute  top-0 border-2 ${
-                            showDuas === subcategory.subcat_id
-                              ? "border-transparent size-[6px] -left-1"
-                              : "-left-[5px] border-white size-[8px]"
+                          className={`bg-primary  rounded-full absolute size-[6px]  top-[5px] border-[3px] ${
+                            activeSubCategory === subcategory.subcat_id
+                              ? "border-transparent   -left-1"
+                              : "-left-[7px] box-content border-white "
                           }`}
                         />
                         <div
                           className={`text-sm ${
-                            showDuas === subcategory.subcat_id
+                            activeSubCategory === subcategory.subcat_id
                               ? "font-bold text-primary"
                               : ""
                           }`}>
@@ -116,17 +157,17 @@ const CategoriesItems: React.FC<{
                           ?.filter(
                             (duas) => duas.subcat_id === subcategory.subcat_id
                           )
-                          .map((dua, index) => (
+                          .map((dua) => (
                             <div
                               onClick={(event) => {
                                 setActiveDua((prev) =>
-                                  prev === dua.dua_id ? null : dua.dua_id
+                                  prev === dua.dua_id ? dua_id : dua.dua_id
                                 );
                                 event.stopPropagation();
                               }}
                               key={dua.dua_id}
                               className={`${
-                                showDuas === subcategory.subcat_id
+                                activeSubCategory === subcategory.subcat_id
                                   ? "block"
                                   : "hidden"
                               }`}>
@@ -144,7 +185,7 @@ const CategoriesItems: React.FC<{
                                   height={20}
                                 />
                                 <p
-                                  className={`text-xs ${
+                                  className={`text-sm ${
                                     activeDua === dua.dua_id
                                       ? "text-primary font-bold"
                                       : "text-secondary-text"

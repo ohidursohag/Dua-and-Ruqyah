@@ -1,5 +1,6 @@
 import CategoriesItems from "./CategoriesItems";
 import CategorySearch from "./CategorySearch";
+
 import { AllCategory, AllSubCategory, AllDuas } from "@/utils/types";
 const DuaCategories  = async () => {
   // console.log(allCategory,allDua,allSubCategory)
@@ -23,8 +24,9 @@ const DuaCategories  = async () => {
   })
   const allDua:AllDuas = await duasRes.json()
   return (
-    <div className="h-full relative ">
-      <div className="absolute top-0 w-full bg-white z-10">
+    <>
+      <div className="relative ">
+      <div className="  w-full bg-white z-10">
         <div className="bg-primary text-white w-full py-4 text-center">
           Categories
         </div>
@@ -32,15 +34,16 @@ const DuaCategories  = async () => {
           <CategorySearch />
         </div>
       </div>
+      </div>
 
-      <div  className="max-h-[700px] pt-[110px] overflow-y-auto overflow-x-hidden scrollbar-thin ">
+      <div  className="h-4/5 overflow-y-auto overflow-x-hidden scrollbar-thin ">
         <CategoriesItems
           allCategory={allCategory}
           allDua={allDua}
           allSubCategory={allSubCategory}
         />
       </div>
-    </div>
+    </>
   );
 };
 
