@@ -6,30 +6,7 @@ import arrowIcon from "@/assets/icons/arrow.svg";
 import Link from "next/link";
 import { convertToHyphenatedLowerCase } from "@/utils/convertToHyphenatedLowerCase";
 import { useSearchParams } from "next/navigation";
-import duar_gurutto from "@/assets/categoryImages/duar_gurutto.svg";
-import zikirer_fozilot from "@/assets/categoryImages/duas-excellence.svg";
-import dua_kobuler_somoy from "@/assets/categoryImages/time-of-dua.svg";
-import jader_dua_kobul_hoy from "@/assets/categoryImages/jader_dua_kobul_hoy.svg";
-import sokal_sondha from "@/assets/categoryImages/morning-evening.svg";
-import ghum from "@/assets/categoryImages/ghum.svg";
-import poshak from "@/assets/categoryImages/poshak.svg";
-import bari from "@/assets/categoryImages/bari.svg";
-import toilet from "@/assets/categoryImages/toilet.svg";
-import azan_ikamot from "@/assets/categoryImages/azan_ikamot.svg";
 import searchIcon from "@/assets/icons/search.svg";
-
-const categoryIcon = [
-  duar_gurutto,
-  zikirer_fozilot,
-  dua_kobuler_somoy,
-  jader_dua_kobul_hoy,
-  sokal_sondha,
-  ghum,
-  poshak,
-  bari,
-  toilet,
-  azan_ikamot,
-];
 
 const CategoriesItems: React.FC<{
   allCategory: AllCategory;
@@ -61,13 +38,10 @@ const CategoriesItems: React.FC<{
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
-  console.log(searchTerm);
   const filteredCategory = allCategory.filter((category) =>
     category.cat_name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  console.log(filteredCategory);
-  // console.log("param Ids ==>",category_id,subCategory_id,dua_id)
-  // console.log("Active ==>",activeCategory,activeSubCategory,activeDua)
+
   return (
     <>
       <div className="  w-full bg-white z-10">
@@ -123,7 +97,7 @@ const CategoriesItems: React.FC<{
                     <div className="flex items-center gap-2">
                       <figure className="bg-secondary-bg p-2 rounded-lg">
                         <Image
-                          src={categoryIcon[index]}
+                          src={`/${category.cat_icon}.svg`}
                           alt={category.cat_icon}
                           width={50}
                           height={50}
@@ -249,8 +223,9 @@ const CategoriesItems: React.FC<{
               </div>
             ))
           ) : (
+            // if no data found on search
             <div className="flex flex-col gap-3 justify-center items-center h-[450px]">
-             <Image
+              <Image
                 src={"https://duaruqyah.com/assets/no-data-found.svg"}
                 width={120}
                 height={75}
