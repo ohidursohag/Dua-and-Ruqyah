@@ -34,7 +34,7 @@ const Profile = () => {
         <Image src={settingIcon} width={24} height={24} alt="setting icon" />
       </button>
       <div
-        className={`w-[288px]  bg-white rounded-2xl absolute z-20 shadow-[0px_0px_10px_1px_rgba(0,0,0,0.2)] top-14 right-0 xl:right-7 2xl:right-0 before:bg-pri before:absolute before:size-0 before:border-b-[30px] before:border-b-white before:shadow- before:border-r-[20px] before:border-r-transparent before:border-l-[20px] before:border-l-transparent before:-top-5 before:right-7 before:xl:right-10 before:2xl:right-7 p-3 text-sm ${
+        className={`w-[288px]  bg-white rounded-2xl absolute z-20 shadow-[0px_0px_10px_1px_rgba(0,0,0,0.2)] top-14 right-0 xl:right-7 2xl:right-0 before:bg-pri before:absolute before:size-0 before:border-b-[30px] before:border-b-white before:border-r-[20px] before:border-r-transparent before:border-l-[20px] before:border-l-transparent before:-top-5 before:right-7 before:xl:right-10 before:2xl:right-7 p-3 text-sm ${
           openDropdown ? "block" : "hidden"
         }`}>
         {/* support us */}

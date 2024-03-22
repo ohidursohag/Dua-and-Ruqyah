@@ -7,6 +7,7 @@ import memorizeIcon from "@/assets/icons/nav/memorize.svg";
 import Image from "next/image";
 import { Dua } from "@/utils/types";
 import AudioPlayer from "./AudioPlayer/AudioPlayer";
+import ToolTip from "../Shared/Utilities/ToolTip";
 const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
   return (
     <div id={`dua_${dua.dua_id}`}
@@ -69,7 +70,11 @@ const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
         )}
         {/* Actions */}
         <div className="flex items-center sm:justify-end gap-10">
-          <button>
+          <button  className="relative group">
+            {/* <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-primary-text text-white rounded-md before:absolute before:size-0 before:border-t-[10px] before:border-t-primary-text before:border-r-[5px] before:border-r-transparent before:border-l-[5px] before:inset-x-1/2 before:-translate-x-1/2 before:-bottom-2 before:border-l-transparent group-hover:block hidden duration-300" >
+              Copy
+            </div> */}
+            <ToolTip title="Copy"/>
             <Image
               src={copyIcon}
               alt=" copy  icon"
@@ -77,7 +82,8 @@ const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
               height={24}
             />
           </button>
-          <button>
+          <button className="relative group">
+            <ToolTip title="Bookmark"/>
             <Image
               src={bookmarkIcon}
               alt=" bookmark icon"
@@ -85,7 +91,8 @@ const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
               height={20}
             />
           </button>
-          <button>
+          <button className="relative group">
+          <ToolTip title="Memorize"/>
             <Image
               src={memorizeIcon}
               alt=" memorize icon"
@@ -93,7 +100,8 @@ const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
               height={24}
             />
           </button>
-          <button>
+          <button className="relative group">
+          <ToolTip title="Share"/>
             <Image
               src={shareIcon}
               alt=" share icon"
@@ -101,7 +109,8 @@ const DuaCard: React.FC<{ dua: Dua }> = ({ dua }) => {
               height={24}
             />
           </button>
-          <button>
+          <button className="relative group">
+          <ToolTip title="Report"/>
             <Image
               src={reportIcon}
               alt=" report icon"
